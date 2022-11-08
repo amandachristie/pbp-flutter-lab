@@ -46,7 +46,7 @@ Namun, perbedaan keduanya adalah `final` dapat digunakan untuk mendeklarasi vari
 
 ## 🎊 **Implementasi Checklist dan Bonus** 🎊
 
-✅ **Membuat sebuah program Flutter baru dengan nama counter_7 dengan cara membuka terminal dan masuk ke direktori sesuai dengan keinginan, lalu menjalankan perintah `flutter create counter_7`.**
+✅ **Membuat sebuah program Flutter baru dengan nama counter_7** dengan cara membuka terminal dan masuk ke direktori sesuai dengan keinginan, lalu menjalankan perintah `flutter create counter_7`.
 
 ✅ **Mengubah tampilan program menjadi seperti pada soal.**
 Untuk menampilkan tampilan program menjadi seperti pada soal, kita inisiasikan home dan membuat class `MyHomePage` dengan pengaturan `title: 'Program Counter'`. Untuk tampilan konten body akan diatur pada implementasi poin berikutnya.
