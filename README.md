@@ -282,6 +282,67 @@ Widget build(BuildContext context) => Drawer(
     );
 ```
 
+ 
+# **Tugas 9: Integrasi Web Service pada Flutter**
+ 
+Nama    : Amanda Christie Tarigan
+ 
+NPM     : 2106751322
+ 
+Kelas   : PBP-D
+ 
+## 🤷 **Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?** 🤷‍
+Bisa, kita dapat melakukan pengambilan data JSON tanpa membuat model terlebih dahulu dengan menggunakan *manual serialization built-in* JSON decoder dari `import dart:convert`. Dalam konteks ini, fungsi jsonDecode dapat digunakan untuk mengubah raw data menjadi Map<String, dynamic>. Namun, data yang diperoleh menjadi tidak sesuai dengan struktur yang diinginkan. Oleh karena itu, sebagai *best practice* sebelum melakukan pengambilan data terlebih dahulu membuat modelnya sehingga data yang didapatkan lebih mudah pengaksesan datanya dan terstruktur.
+ 
+## 📱 **Widget yang Dipakai di Proyek Tugas 9** 📱
+ 
+| No | Widget | Fungsi |
+| -- | ------------- | ------------- |
+| 1  | ElevatedButton | Menampilkan button yang dapat diberi tulisan dan terdapat warna background di buttonnya |
+| 2  | RichText | Menampilkan teks yang menggunakan beberapa style yang berbeda-beda |
+| 3  | Flexible  | Mengatur turunan widget Baris, Kolom, atau Flex diflex |
+| 4  | TextSpan  | Mengatur style pada teks |
+| 5  | Checkbox  | Menampilkan pilihan berupa checkbox kepada user |
+ 
+## 📥 **Mekanisme pengambilan data dari json pada Flutter** 📥
+ 
+- Melakukan `flutter pub add http` untuk menambahkan dependency http ke dalam proyek, dependency ini digunakan untuk bertukar data melalui HTTP request, seperti GET, POST, PUT, dan lain-lain.
+ 
+- Membuat model sesuai dengan attribute dari json yang akan di fetch.
+ 
+- Response didecode menjadi JSON kemudian dikonversi menjadi model yang dibuat
+ 
+- Menampilkan data dengan menggunakan `FutureBuilder`.
+ 
+## 🎊 **Implementasi Checklists** 🎊
+ 
+✅ Membuat model mywatchlist sesuai dengan respons dari data yang berasal dari *web service* tersebut.
+ 
+✅ Membuat page mywatchlist untuk menambahkan halaman mywatchlist yang berisi semua watch list yang ada pada endpoint JSON di Django.
+ 
+✅ Menambahkan depedency http dan menambah permission internet pada android pada file `android/app/src/main/AndroidManifest.xml`.
+ 
+✅ Memanfaatkan function util di mywatchlist untuk mendapatkan data watchlist.
+ 
+✅ Membuat navigasi dari setiap judul watch list ke halaman detail.
+ 
+✅ Menggunakan data yang didapat dan menampilkannya pada card.
+ 
+✅ Menampilkan halaman detail untuk setiap mywatchlist yang ada pada daftar tersebut. Halaman ini menampilkan judul, *release date*, *rating*, *review*, dan *status* (sudah ditonton/belum).
+ 
+✅ Melakukan add-commit-push ke GitHub.
+ 
+## 🎊 **Implementasi Bonus** 🎊
+ 
+✅ Menambahkan checkbox pada setiap watchlist pada halaman mywatchlist. Dimana *checkbox* akan tercentang jika status ditonton bernilai `true` dan tidak jika bernilai `false`.
+ 
+✅ Menggunakan CheckboxListTile sehingga jika checkbox ditekan, maka status ditonton akan berubah (perubahan akan terjadi di lokal secara sementara saja, status pada endpoint tidak perlu diubah).
+ 
+✅ Menggunakan color BoxDecoration untuk menambahkan warna untuk *outline* pada setiap mywatchlist pada halaman mywatchlist berdasarkan status ditonton (Dua warna yang dipilih bebas).
+ 
+✅ Refactor function *fetch data* dari *web service* ke sebuah file terpisah dalam konteks ini memindahkan file untuk melakukan `fetch` ke dalam ke folder tertentu.
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

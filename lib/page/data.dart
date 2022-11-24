@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:counter_7/drawer.dart';
-import 'package:counter_7/budget.dart';
+import 'package:counter_7/utility/drawer.dart';
+import 'package:counter_7/model/budget.dart';
 
 class MyDataPage extends StatefulWidget {
   const MyDataPage({super.key});
@@ -24,9 +24,9 @@ class _MyDataPageState extends State<MyDataPage> {
               children: Budget.budgets.map((budget) {
                 return Card(
                   child: ListTile(
-                      title: Text("${budget.judul}\n${budget.nominal}"),
+                      title: Text("${budget.name}\n${budget.amount}"),
                       subtitle: Text(budget.date.toString().split(' ')[0]),
-                      trailing: Text(budget.tipe)),
+                      trailing: Text(budget.type)),
                 );
               }).toList(),
             ),

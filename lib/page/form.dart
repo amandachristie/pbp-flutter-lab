@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:counter_7/budget.dart';
-import 'package:counter_7/drawer.dart';
+import 'package:counter_7/model/budget.dart';
+import 'package:counter_7/utility/drawer.dart';
 
 class MyFormPage extends StatefulWidget {
   const MyFormPage({super.key});
@@ -13,8 +13,8 @@ class _MyFormPageState extends State<MyFormPage> {
   final _formKey = GlobalKey<FormState>();
 
   String _judul = "";
-  int _nominal = 0;
-  String? _tipe;
+  int _amount = 0;
+  String? _type;
   DateTime? _date = DateTime.now();
 
   @override
@@ -67,11 +67,11 @@ class _MyFormPageState extends State<MyFormPage> {
                 ),
               ),
               Padding(
-                // Input Nominal
+                // Input amount
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    hintText: "Contoh: 15000",
+                    hintText: "Contoh: 20000",
                     labelText: "Nominal",
                     // Menambahkan circular border agar lebih rapi
                     border: OutlineInputBorder(
@@ -79,13 +79,13 @@ class _MyFormPageState extends State<MyFormPage> {
                     ),
                   ),
                   keyboardType: TextInputType.number,
-                  // Menambahkan behavior saat nominal diketik
+                  // Menambahkan behavior saat amount diketik
                   onChanged: (String? value) {
                     setState(() {
                       if (value == null || value.isEmpty) {
-                        _nominal = 0;
+                        _amount = 0;
                       } else {
-                        _nominal = int.parse(value);
+                        _amount = int.parse(value);
                       }
                     });
                   },
@@ -93,30 +93,30 @@ class _MyFormPageState extends State<MyFormPage> {
                   onSaved: (String? value) {
                     setState(() {
                       if (value == null || value.isEmpty) {
-                        _nominal = 0;
+                        _amount = 0;
                       } else {
-                        _nominal = int.parse(value);
+                        _amount = int.parse(value);
                       }
                     });
                   },
                   // Validator sebagai validasi form
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
-                      return 'Nominal tidak boleh kosong!';
+                      return 'amount tidak boleh kosong!';
                     }
                     if (int.parse(value) == 0) {
-                      return 'Nominal tidak boleh nol!';
+                      return 'amount tidak boleh nol!';
                     }
                     return null;
                   },
                 ),
               ),
               Padding(
-                // Input tipe
+                // Input type
                 padding: const EdgeInsets.all(8.0),
                 child: DropdownButton(
-                  value: _tipe,
-                  hint: const Text("Pilih tipe"),
+                  value: _type,
+                  hint: const Text("Pilih Jenis"),
                   icon: const Icon(Icons.keyboard_arrow_down),
                   items: const <DropdownMenuItem<String>>[
                     DropdownMenuItem<String>(
@@ -130,7 +130,7 @@ class _MyFormPageState extends State<MyFormPage> {
                   ],
                   onChanged: (String? value) {
                     setState(() {
-                      _tipe = value ?? "";
+                      _type = value ?? "";
                     });
                   },
                 ),
@@ -178,9 +178,9 @@ class _MyFormPageState extends State<MyFormPage> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       Budget.addBudget(
-                        judul: _judul,
-                        nominal: _nominal,
-                        tipe: _tipe,
+                        name: _judul,
+                        amount: _amount,
+                        type: _type,
                         date: _date,
                       );
                       showDialog(
@@ -200,7 +200,7 @@ class _MyFormPageState extends State<MyFormPage> {
                               children: [
                                 Center(
                                   child: Text(
-                                    "Berhasil menambahkan $_tipe $_judul sebesar ${_nominal.toString()}",
+                                    "Berhasil menambahkan $_type $_judul sebesar ${_amount.toString()}",
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
